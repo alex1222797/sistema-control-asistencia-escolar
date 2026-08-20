@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Control de Asistencia Escolar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         FONDO
+    ========================================================== -->
+
+    <div class="paper-lines" aria-hidden="true"></div>
+
+
+    <!-- =========================================================
+         LOGIN Y REGISTRO
+    ========================================================== -->
+
+    <section id="screen-login" class="screen screen-login active">
+
+        <div class="login-card">
+
+            <!-- MARCA -->
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    SCAE
+                </div>
+
+                <h1>
+                    Sistema de Control de<br>
+                    Asistencia Escolar
+                </h1>
+
+                <p class="brand-sub">
+                    Centro Escolar · Registro diario de estudiantes
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 FORMULARIO DE LOGIN
+            ================================================== -->
+
+            <form id="form-login" class="login-form">
+
+                <label class="field">
+
+                    <span>Usuario</span>
+
+                    <input
+                        type="text"
+                        id="input-usuario"
+                        placeholder="ej. profesor.lopez"
+                        autocomplete="username"
+                        required
+                    >
+
+                </label>
+
+
+                <label class="field field-password">
+
+                    <span>Contraseña</span>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="input-clave"
+                            placeholder="••••••••"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="btn-toggle-password"
+                            data-target="input-clave"
+                            title="Mostrar u ocultar contraseña"
+                        >
+                            👁️
+                        </button>
+
+                    </div>
+
+                </label>
+
+
+                <p
+                    id="login-error"
+                    class="login-error"
+                    hidden
+                >
+                    Usuario o contraseña incorrectos.
+                </p>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                >
+                    Iniciar sesión
+                </button>
+
+
+                <div class="auth-switch">
+
+                    <p>
+                        ¿No tienes una cuenta?
+
+                        <button
+                            type="button"
+                            id="btn-show-register"
+                            class="btn-link"
+                        >
+                            Regístrate aquí
+                        </button>
+                    </p>
+
+                </div>
+
+            </form>
+
+
+            <!-- =================================================
+                 FORMULARIO DE REGISTRO
+            ================================================== -->
+
+            <form
+                id="form-register"
+                class="login-form"
+                hidden
+            >
+
+                <!-- USUARIO -->
+
+                <label class="field">
+
+                    <span>Usuario</span>
+
+                    <input
+                        type="text"
+                        id="input-reg-usuario"
+                        placeholder="ej. profesor.lopez"
+                        autocomplete="username"
+                        minlength="3"
+                        maxlength="50"
+                        required
+                    >
+
+                </label>
+
+
+                <!-- CORREO -->
+
+                <label class="field">
+
+                    <span>Correo electrónico</span>
+
+                    <input
+                        type="email"
+                        id="input-reg-email"
+                        placeholder="ej. docente@escuela.edu"
+                        autocomplete="email"
+                        maxlength="150"
+                        required
+                    >
+
+                </label>
+
+
+                <!-- DIRECCIÓN -->
+
+                <label class="field">
+
+                    <span>Dirección</span>
+
+                    <input
+                        type="text"
+                        id="input-reg-direccion"
+                        placeholder="ej. Colonia Las Flores, Santa Tecla"
+                        autocomplete="street-address"
+                        maxlength="255"
+                        required
+                    >
+
+                </label>
+
+
+                <!-- CONTRASEÑA -->
+
+                <label class="field field-password">
+
+                    <span>Contraseña</span>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="input-reg-clave"
+                            placeholder="••••••••"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="btn-toggle-password"
+                            data-target="input-reg-clave"
+                            title="Mostrar u ocultar contraseña"
+                        >
+                            👁️
+                        </button>
+
+                    </div>
+
+                </label>
+
+
+                <!-- MENSAJES -->
+
+                <p
+                    id="register-error"
+                    class="login-error"
+                    hidden
+                ></p>
+
+
+                <p
+                    id="register-success"
+                    class="login-success"
+                    hidden
+                >
+                    ¡Cuenta creada exitosamente! Ahora puedes iniciar sesión.
+                </p>
+
+
+                <!-- CREAR CUENTA -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                >
+                    Crear cuenta
+                </button>
+
+
+                <!-- CAMBIAR A LOGIN -->
+
+                <div class="auth-switch">
+
+                    <p>
+                        ¿Ya tienes una cuenta?
+
+                        <button
+                            type="button"
+                            id="btn-show-login"
+                            class="btn-link"
+                        >
+                            Inicia sesión
+                        </button>
+                    </p>
+
+                </div>
+
+            </form>
+
+
+            <p class="login-hint">
+                Sistema de Control de Asistencia Escolar
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         APLICACIÓN DESPUÉS DEL LOGIN
+    ========================================================== -->
+
+    <div
+        id="app"
+        class="app"
+        hidden
+    >
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark small">
+                    SCAE
+                </span>
+
+                <span class="sidebar-brand-text">
+                    Asistencia<br>
+                    Escolar
+                </span>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <button
+                    class="nav-btn"
+                    data-target="screen-menu"
+                >
+                    <span class="nav-icon">▤</span>
+                    Menú principal
+                </button>
+
+
+                <button
+                    class="nav-btn"
+                    data-target="screen-students"
+                >
+                    <span class="nav-icon">☰</span>
+                    Lista de estudiantes
+                </button>
+
+
+                <button
+                    class="nav-btn"
+                    data-target="screen-attendance"
+                >
+                    <span class="nav-icon">✓</span>
+                    Registrar asistencia
+                </button>
+
+
+                <button
+                    class="nav-btn"
+                    data-target="screen-reports"
+                >
+                    <span class="nav-icon">▦</span>
+                    Reportes
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+
+                <div class="teacher-chip">
+
+                    <span
+                        class="teacher-avatar"
+                        id="teacher-avatar"
+                    >
+                        P
+                    </span>
+
+                    <div>
+
+                        <div
+                            class="teacher-name"
+                            id="teacher-name"
+                        >
+                            Docente
+                        </div>
+
+                        <div class="teacher-role">
+                            Sesión activa
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="btn-logout"
+                    class="btn btn-ghost btn-block"
+                >
+                    Cerrar sesión
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =====================================================
+             CONTENIDO PRINCIPAL
+        ====================================================== -->
+
+        <main class="main">
+
+
+            <!-- =================================================
+                 MENÚ PRINCIPAL
+            ================================================== -->
+
+            <section
+                id="screen-menu"
+                class="screen active"
+            >
+
+                <header class="screen-header">
+
+                    <p class="eyebrow">
+                        Panel principal
+                    </p>
+
+                    <h2>
+                        Buen día,
+                        <span id="greet-name">
+                            docente
+                        </span>
+                    </h2>
+
+                    <p class="screen-sub">
+                        Elige una acción para comenzar el registro de hoy,
+                        <span id="today-date"></span>.
+                    </p>
+
+                </header>
+
+
+                <div class="menu-grid">
+
+                    <button
+                        class="menu-card"
+                        data-target="screen-students"
+                    >
+
+                        <span class="menu-card-icon">
+                            ☰
+                        </span>
+
+                        <span class="menu-card-title">
+                            Ver estudiantes
+                        </span>
+
+                        <span class="menu-card-desc">
+                            Consulta la lista por grado y sección.
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="menu-card"
+                        data-target="screen-attendance"
+                    >
+
+                        <span class="menu-card-icon">
+                            ✓
+                        </span>
+
+                        <span class="menu-card-title">
+                            Registrar asistencia
+                        </span>
+
+                        <span class="menu-card-desc">
+                            Marca presentes, ausentes y tardanzas.
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="menu-card"
+                        data-target="screen-reports"
+                    >
+
+                        <span class="menu-card-icon">
+                            ▦
+                        </span>
+
+                        <span class="menu-card-title">
+                            Ver reportes
+                        </span>
+
+                        <span class="menu-card-desc">
+                            Consulta faltas y tardanzas acumuladas.
+                        </span>
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="stats-row"
+                    id="stats-row"
+                >
+
+                    <div class="stat-card">
+
+                        <span
+                            class="stat-value"
+                            id="stat-total"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Estudiantes registrados hoy
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card stamp-presente">
+
+                        <span
+                            class="stat-value"
+                            id="stat-presentes"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Presentes
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card stamp-tarde">
+
+                        <span
+                            class="stat-value"
+                            id="stat-tardes"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Tardanzas
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card stamp-ausente">
+
+                        <span
+                            class="stat-value"
+                            id="stat-ausentes"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Ausencias
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ESTUDIANTES
+            ================================================== -->
+
+            <section
+                id="screen-students"
+                class="screen"
+            >
+
+                <header class="screen-header">
+
+                    <p class="eyebrow">
+                        Estudiantes
+                    </p>
+
+                    <h2>
+                        Lista de estudiantes
+                    </h2>
+
+                    <p class="screen-sub">
+                        Selecciona grado y sección para ver el listado.
+                        Doble clic sobre un estudiante para ver su ficha.
+                    </p>
+
+                </header>
+
+
+                <div class="selector-row">
+
+                    <label class="field">
+
+                        <span>
+                            Grado
+                        </span>
+
+                        <select
+                            id="select-grado-students"
+                        ></select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Sección
+                        </span>
+
+                        <select
+                            id="select-seccion-students"
+                        ></select>
+
+                    </label>
+
+
+                    <button
+                        id="btn-agregar-estudiante"
+                        class="btn btn-secondary"
+                    >
+                        + Agregar estudiante
+                    </button>
+
+                </div>
+
+
+                <div class="table-card">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>N°</th>
+                                <th>Foto</th>
+                                <th>Nombre del estudiante</th>
+                                <th>Estado más reciente</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="tbody-students"
+                        ></tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ASISTENCIA
+            ================================================== -->
+
+            <section
+                id="screen-attendance"
+                class="screen"
+            >
+
+                <header class="screen-header">
+
+                    <p class="eyebrow">
+                        Registro diario
+                    </p>
+
+                    <h2>
+                        Registrar asistencia
+                    </h2>
+
+                    <p class="screen-sub">
+                        Marca el estado de cada estudiante y guarda
+                        el registro del día.
+                    </p>
+
+                </header>
+
+
+                <div class="selector-row">
+
+                    <label class="field">
+
+                        <span>
+                            Grado
+                        </span>
+
+                        <select
+                            id="select-grado-attendance"
+                        ></select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Sección
+                        </span>
+
+                        <select
+                            id="select-seccion-attendance"
+                        ></select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Fecha
+                        </span>
+
+                        <input
+                            type="date"
+                            id="input-fecha-attendance"
+                        >
+
+                    </label>
+
+
+                    <button
+                        id="btn-marcar-todos"
+                        class="btn btn-secondary"
+                    >
+                        Marcar todos presentes
+                    </button>
+
+                </div>
+
+
+                <div class="table-card">
+
+                    <table class="data-table attendance-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>N°</th>
+                                <th>Nombre del estudiante</th>
+                                <th class="th-center">Presente</th>
+                                <th class="th-center">Ausente</th>
+                                <th class="th-center">Tarde</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="tbody-attendance"
+                        ></tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="save-row">
+
+                    <p
+                        id="save-feedback"
+                        class="save-feedback"
+                        aria-live="polite"
+                    ></p>
+
+                    <button
+                        id="btn-guardar-asistencia"
+                        class="btn btn-primary"
+                    >
+                        Guardar asistencia del día
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 REPORTES
+            ================================================== -->
+
+            <section
+                id="screen-reports"
+                class="screen"
+            >
+
+                <header class="screen-header">
+
+                    <p class="eyebrow">
+                        Reportes
+                    </p>
+
+                    <h2>
+                        Reporte de asistencias y faltas
+                    </h2>
+
+                    <p class="screen-sub">
+                        Consulta el historial registrado por grado y sección.
+                    </p>
+
+                </header>
+
+
+                <div class="selector-row">
+
+                    <label class="field">
+
+                        <span>
+                            Grado
+                        </span>
+
+                        <select
+                            id="select-grado-reports"
+                        ></select>
+
+                    </label>
+
+
+                    <label class="field">
+
+                        <span>
+                            Sección
+                        </span>
+
+                        <select
+                            id="select-seccion-reports"
+                        ></select>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    class="stats-row"
+                    id="report-stats-row"
+                >
+
+                    <div class="stat-card stamp-presente">
+
+                        <span
+                            class="stat-value"
+                            id="report-presentes"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Total presentes
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card stamp-tarde">
+
+                        <span
+                            class="stat-value"
+                            id="report-tardes"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Total tardanzas
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card stamp-ausente">
+
+                        <span
+                            class="stat-value"
+                            id="report-ausentes"
+                        >
+                            0
+                        </span>
+
+                        <span class="stat-label">
+                            Total ausencias
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-actions-row">
+
+                    <p
+                        id="report-pdf-feedback"
+                        class="save-feedback"
+                        aria-live="polite"
+                    ></p>
+
+                    <button
+                        id="btn-descargar-reporte-pdf"
+                        class="btn btn-primary"
+                    >
+                        Descargar reporte diario en PDF
+                    </button>
+
+                </div>
+
+
+                <div class="table-card">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Estudiante</th>
+                                <th>Estado</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+                            id="tbody-reports"
+                        ></tbody>
+
+                    </table>
+
+
+                    <p
+                        id="reports-empty"
+                        class="empty-state"
+                        hidden
+                    >
+                        Todavía no hay asistencia registrada
+                        para este grado y sección.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         MODAL AGREGAR ESTUDIANTE
+    ========================================================== -->
+
+    <div
+        id="modal-agregar"
+        class="modal-overlay"
+        hidden
+    >
+
+        <div class="modal-card">
+
+            <div class="modal-header">
+
+                <h3>
+                    Agregar estudiante
+                </h3>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    data-close-modal="modal-agregar"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <form
+                id="form-agregar-estudiante"
+                class="modal-form"
+            >
+
+                <label class="field">
+
+                    <span>
+                        Nombre
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-nombre-nuevo"
+                        placeholder="ej. Ana"
+                        required
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Apellido
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-apellido-nuevo"
+                        placeholder="ej. López"
+                        required
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Dirección
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-direccion-nuevo"
+                        placeholder="ej. Col. Las Flores, Santa Tecla"
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Teléfono
+                    </span>
+
+                    <input
+                        type="tel"
+                        id="input-telefono-nuevo"
+                        placeholder="ej. 7000-0000"
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Responsable
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-responsable-nuevo"
+                        placeholder="ej. María López (madre)"
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Grado
+                    </span>
+
+                    <select
+                        id="select-grado-nuevo"
+                    ></select>
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Sección
+                    </span>
+
+                    <select
+                        id="select-seccion-nuevo"
+                    ></select>
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Foto
+                    </span>
+
+                    <input
+                        type="file"
+                        id="input-foto-nuevo"
+                        accept="image/*"
+                    >
+
+                    <img
+                        id="preview-foto-nuevo"
+                        class="foto-preview"
+                        alt="Vista previa de la foto"
+                        hidden
+                    >
+
+                </label>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-block"
+                >
+                    Guardar estudiante
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         MODAL FICHA ESTUDIANTE
+    ========================================================== -->
+
+    <div
+        id="modal-ficha"
+        class="modal-overlay"
+        hidden
+    >
+
+        <div class="modal-card">
+
+            <div class="modal-header">
+
+                <h3>
+                    Ficha del estudiante
+                </h3>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    data-close-modal="modal-ficha"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div
+                id="ficha-vista"
+                class="ficha-carnet"
+            >
+
+                <div class="carnet-foto">
+
+                    <img
+                        id="ficha-foto"
+                        class="ficha-foto"
+                        alt="Foto del estudiante"
+                        hidden
+                    >
+
+                    <span
+                        class="ficha-avatar"
+                        id="ficha-avatar"
+                    >
+                        A
+                    </span>
+
+                </div>
+
+
+                <div class="carnet-datos">
+
+                    <p class="carnet-eyebrow">
+                        Carnet estudiantil
+                    </p>
+
+                    <p
+                        class="ficha-nombre"
+                        id="ficha-nombre"
+                    >
+                        —
+                    </p>
+
+                    <p
+                        class="carnet-grupo"
+                        id="ficha-grupo"
+                    >
+                        —
+                    </p>
+
+
+                    <dl class="carnet-lista">
+
+                        <div>
+                            <dt>Dirección</dt>
+                            <dd id="ficha-direccion">—</dd>
+                        </div>
+
+                        <div>
+                            <dt>Teléfono</dt>
+                            <dd id="ficha-telefono">—</dd>
+                        </div>
+
+                        <div>
+                            <dt>Responsable</dt>
+                            <dd id="ficha-responsable">—</dd>
+                        </div>
+
+                        <div>
+                            <dt>Estado más reciente</dt>
+                            <dd id="ficha-estado">—</dd>
+                        </div>
+
+                    </dl>
+
+                </div>
+
+            </div>
+
+
+            <form
+                id="form-editar-estudiante"
+                class="modal-form"
+                hidden
+            >
+
+                <label class="field">
+
+                    <span>
+                        Nombre
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-nombre-editar"
+                        required
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Apellido
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-apellido-editar"
+                        required
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Dirección
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-direccion-editar"
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Teléfono
+                    </span>
+
+                    <input
+                        type="tel"
+                        id="input-telefono-editar"
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Responsable
+                    </span>
+
+                    <input
+                        type="text"
+                        id="input-responsable-editar"
+                    >
+
+                </label>
+
+
+                <label class="field">
+
+                    <span>
+                        Foto
+                    </span>
+
+                    <input
+                        type="file"
+                        id="input-foto-editar"
+                        accept="image/*"
+                    >
+
+                    <img
+                        id="preview-foto-editar"
+                        class="foto-preview"
+                        alt="Vista previa de la foto"
+                        hidden
+                    >
+
+                </label>
+
+            </form>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="btn-eliminar-estudiante"
+                    class="btn btn-danger"
+                >
+                    Eliminar
+                </button>
+
+
+                <button
+                    type="button"
+                    id="btn-cancelar-edicion"
+                    class="btn btn-ghost btn-ghost-oscuro"
+                    hidden
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="button"
+                    id="btn-editar-estudiante"
+                    class="btn btn-secondary"
+                >
+                    Actualizar
+                </button>
+
+
+                <button
+                    type="submit"
+                    id="btn-guardar-edicion"
+                    class="btn btn-primary"
+                    form="form-editar-estudiante"
+                    hidden
+                >
+                    Guardar cambios
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         LIBRERÍAS PDF
+    ========================================================== -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+    </script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js">
+    </script>
+
+
+    <!-- JAVASCRIPT DEL SISTEMA -->
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
