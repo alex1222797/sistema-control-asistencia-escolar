@@ -3,8 +3,7 @@
    index.js
 ===================================================================== */
 
-const API_BASE = "http://localhost:8000";
-
+const API_BASE = "https://sistema-control-asistencia-escolar.onrender.com";
 /* ===================== ELEMENTOS ===================== */
 const screenLogin = document.getElementById("screen-login");
 const app = document.getElementById("app");
